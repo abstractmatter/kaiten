@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Wikipedia</title>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16">
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.css" />
+		
+		<script type="text/javascript" src="../js/jquery-1.6.2.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui-1.8.11.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jkaiten.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
+
+		<script type="text/javascript" src="connectors/wikipedia/language-tool.js">&#160;</script>
+		<script type="text/javascript" src="connectors/wikipedia/labels.js">&#160;</script>
+		<script type="text/javascript" src="connectors/wikipedia/languages.js">&#160;</script>
+		<script type="text/javascript" src="connectors/wikipedia/wikipedia.js">&#160;</script>
+	</head>
+	<body>
+		<div id="container"></div>
+		<div id="custom-options-text" class="hidden">
+			You can add your custom options here.<br /><br />
+			For more information and documentation, please visit our website :<br /><br />
+			<a href="http://www.nectil.com/kaiten" target="_blank">http://www.nectil.com/kaiten</a>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				// keep a reference to Kaiten's container
+				$K = $('#container');
+				// initialize Kaiten
+				$K.kaiten({
+					columnWidth : '400px',
+					optionsSelector : '#custom-options-text',
+					connectors : [ window.kConnectors.wikipedia ],
+					startup : function(dataFromURL){
+						// display home page
+						this.kaiten('load', { kConnector:'wikipedia.home' });
+						// handle data passed through the URL
+						if (dataFromURL)
+						{
+							this.kaiten('load', dataFromURL);
+						}
+					}
+				});	
+			});			
+		</script>			
+	</body>
+</html>

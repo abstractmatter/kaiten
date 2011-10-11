@@ -1,0 +1,83 @@
+.k-panel.crunchbase
+{
+	font-size:105%;
+}
+
+.k-panel.crunchbase a
+{
+	 color: #0645AD;
+	 text-decoration:none;
+}
+.k-panel.crunchbase a:hover
+{
+	 text-decoration:underline;
+}
+
+.k-panel.crunchbase a.active
+{
+	color:white;
+	font-weight:bold;
+	background-color:#0645AD;
+	text-decoration:none;
+}
+
+.k-panel.crunchbase h1,
+.k-panel.crunchbase h2,
+.k-panel.crunchbase h3,
+.k-panel.crunchbase h4,
+.k-panel.crunchbase h5,
+.k-panel.crunchbase h6
+{    
+    overflow: hidden;
+    padding: 0.5em 0 0.17em 0;
+    width: auto;
+}
+
+.k-panel.crunchbase h1,
+.k-panel.crunchbase h2
+{
+	font-weight: normal;
+	/*border-bottom-color: #AAAAAA;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;*/
+	margin-bottom: 0.6em;
+}
+.k-panel.crunchbase h3,
+.k-panel.crunchbase h4,
+.k-panel.crunchbase h5,
+.k-panel.crunchbase h6
+{
+	font-weight:bold;
+	/*border:0 none;*/
+}
+
+.k-panel.crunchbase p
+{
+	line-height: 1.5em;
+    margin: 0.4em 0 0.5em 0;
+}
+
+.k-panel.crunchbase .company-img,
+.k-panel.crunchbase .product-img,
+.k-panel.crunchbase .person-img
+{
+	float:right;
+	margin-left:10px;
+}
+
+.k-panel.crunchbase p.infoline
+{
+	color: #999999;
+    font-size: 1em;
+    line-height: normal;
+}
+.k-panel.crunchbase p.infoline strong
+{
+	color: black;
+}
+
+.k-panel.crunchbase .spacer
+{
+	height:25px;
+}
+

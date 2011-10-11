@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Kaiten</title>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16" />
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.css" />
+		<script type="text/javascript" src="../js/jquery-1.6.2.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui-1.8.11.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jkaiten.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
+	</head>
+	<body>
+		<div id="container"></div>
+		<div id="custom-options-text" class="hidden">
+			You can add your custom options here.<br /><br />
+			For more information and documentation, please visit our website :<br /><br />
+			<a href="http://www.nectil.com/kaiten" target="_blank">http://www.nectil.com/kaiten</a>
+		</div>
+		<script type="text/javascript">
+			(function($){
+				// JS controller function
+				function jsController(data, $panel, $kaiten) {
+					var htmlStore = {
+							"home"		: {
+								title	: 'Home', 
+								content : '<h2>Home panel</h2><p>Welcome to the Kaiten demo page!<br />Here we show you how to build a very simple JS controller. Click on any link...</p>'
+							},
+							"news"		: { 
+								title	: 'News from us', 
+								content : '<h2>News</h2><p>Kaiten v1.0 released! Check our Wikipedia demo!</p>'
+							},
+							"faq"		: { 
+								title	: 'Frequently Asked Questions', 
+								content : '<h2>FAQ</h2><p>Learn everything about Kaiten in a snap.</p>'
+							},
+							"contact"	: { 
+								title	: 'Contact us!', 
+								content : '<h2>Contact</h2><p>Stay in touch with our team!</p>'
+							}
+						};
+
+						if (data.panelID && htmlStore[data.panelID])
+						{									
+							var $body = kTemplater.jQuery('panel.body');
+							var $contentBlock = kTemplater.jQuery('block.content', { content : htmlStore[data.panelID].content });
+							$body.append($contentBlock);									
+							var $navBlock = kTemplater.jQuery('block.navigation');
+							for (var i in htmlStore)
+							{
+								if (htmlStore.hasOwnProperty(i))
+								{
+									$navBlock.append(kTemplater.jQuery('line.navigation', {
+										label : htmlStore[i].title,
+										data : { kLoader:jsController, panelID:i, kTitle:htmlStore[i].title }
+									}));
+								}
+							}
+							$body.append($navBlock);									
+							return $body;
+						}
+														
+						throw new Error('Cannot find panel content!');
+				};
+				// keep a reference to Kaiten's container and initialize Kaiten
+				$K = $('#container');
+				$K.kaiten({ 
+					// 4 panels max. on the screen
+					columnWidth : '25%',
+					optionsSelector : '#custom-options-text',
+					startup : function(dataFromURL){
+						// handle URL parameters sent when opening a panel in a new tab
+						if (dataFromURL)
+						{
+							this.kaiten('load', jsController, dataFromURL);
+						}
+						else
+						{
+							// load home panel content, by using the "jscontroller" connector (see below)
+							this.kaiten('load', jsController, { panelID:"home", kTitle:"JS controller" });
+						}
+					}
+				});
+			})(jQuery);
+		</script>			
+	</body>
+</html>

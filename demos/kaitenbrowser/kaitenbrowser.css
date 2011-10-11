@@ -1,0 +1,29 @@
+.k-panel.kaitenbrowser
+{
+	font-size:105%;
+}
+
+.k-panel.kaitenbrowser p
+{
+	line-height: 1.5em;
+    margin: 0.4em 0 0.5em 0;
+}
+
+.k-panel.kaitenbrowser .block p
+{
+	font-size:1em;
+	margin-bottom: 1em;
+	clear:left;
+}
+
+.k-panel.kaitenbrowser .block p.warning
+{
+	background-color:#eee;
+	padding:1em;
+}
+
+.k-panel.kaitenbrowser .block img
+{
+	float:left;
+	margin:.4em 8px 8px 0;
+}

@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Kaiten</title>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16">
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.css" />		
+		<link rel="stylesheet" type="text/css" href="kaitenbrowser/kaitenbrowser.css" />
+
+		<script type="text/javascript" src="connectors/crunchbase/crunchbase.js">&#160;</script>
+		<script type="text/javascript" src="connectors/twitter/twitter.js">&#160;</script>
+				
+		<script type="text/javascript" src="../js/jquery-1.6.2.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui-1.8.11.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jkaiten.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
+		
+		<script type="text/javascript" src="connectors/wikipedia/language-tool.js">&#160;</script>
+		<script type="text/javascript" src="kaitenbrowser/labels.js">&#160;</script>
+		<script type="text/javascript" src="connectors/wikipedia/languages.js">&#160;</script>
+		<script type="text/javascript" src="connectors/wikipedia/wikipedia.js">&#160;</script>		
+
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-23187517-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+
+	</head>
+	<body>
+		<div id="content">
+			<div class="panel-body">
+				<div class="block-nav">
+					<div class="summary" id="translate-home-summary">
+						<div class="label" style="background-image: url(&quot;connectors/wikipedia/images/kaiten-32.png&quot;);">Welcome to <strong>Kaiten Browser</strong></div>
+						<div class="info">This website is a demo of Kaiten, a new navigation model for web applications that allows you to browse thru one or several applications in a single continuous space. <a class="navigable focus" data-load="{&quot;kConnector&quot;:&quot;html.page&quot;,&quot;url&quot;:&quot;kaitenbrowser/video.html&quot;,&quot;kTitle&quot;:&quot;Video&quot;,&quot;kWidth&quot;:&quot;960px&quot;}">Watch the video</a>.</div>
+					</div>
+					<div class="block" id="translate-home-content">
+						<p><strong>Kaiten is a new navigation model for web applications.</strong> Unlike conventional applications where each screen replace another, Kaiten stacks the screens side by side horizontally, like columns, and provides a continuous user experience. <a href="http://www.officity.com/kaiten/">More about Kaiten…</a></p>
+						<p><strong>Kaiten takes its name from <a href="http://en.wikipedia.org/wiki/Conveyor_belt_sushi">kaiten-zushi</a></strong>, a <a href="http://en.wikipedia.org/wiki/Sushi">sushi</a> restaurant where the sushi are placed on a rotating conveyor belt. Like the conveyor belt, Kaiten moves the screens on a continuous infinite space.</p>
+						<p>For a seamless experience, download the <a class="k-exit" href="https://addons.mozilla.org/fr/firefox/addon/kaitenbrowser/">KaitenBrowser Extension for Firefox</a>!</p>
+						<p><strong>Kaiten is a free software</strong> written in javascript. You can download Kaiten jQuery plug-in and create apps and connectors to existing apps.</p>
+						<p><strong>Kaiten is a component of <a href="http://www.crunchbase.com/product/officity">Officity</a></strong>, an <a href="http://en.wikipedia.org/wiki/GNU_General_Public_License">open source</a> web applications platform. <a href="http://www.officity.com/">More about Officity…</a></p>
+						<p>Kaiten and Officity are products of <a href="http://www.crunchbase.com/company/nectil">Nectil</a>, a company based in Brussels specialized in ad-hoc management applications. <a href="http://www.nectil.com/fre/">More information about Nectil…</a></p>
+						<p class="warning rounded-corners"><em>For this demo, we had integrated only basic features of Wikipedia, Twitter, and Crunchbase. <strong>Kaiten is <a href="http://en.wikipedia.org/wiki/GNU_General_Public_License">open source</a> and anybody can create connectors</strong>. Download Kaiten, create your own connectors, and send us your feedbacks!</em></p>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="block-nav">
+					<div class="summary" id="translate-home-summary">
+						<div class="label" style="background-image: url(&quot;connectors/wikipedia/images/kaiten-32.png&quot;);">Bienvenue sur <strong>Kaiten Browser</strong></div>
+						<div class="info">Ce site est une d&#xE9;monstration de ce que peut faire Kaiten, un nouveau mod&#xE8;le de navigation pour applications web qui vous permet de naviguer dans un espace continu sur une m&#xEA;me application ou au travers de plusieurs applications. <a class="navigable" data-load="{&quot;kConnector&quot;:&quot;html.page&quot;,&quot;url&quot;:&quot;kaitenbrowser/video.html&quot;,&quot;kTitle&quot;:&quot;Video&quot;,&quot;kWidth&quot;:&quot;960px&quot;}">Visionner la video</a>.</div>
+					</div>
+					<div class="block" id="translate-home-content">
+						<p><strong>Kaiten est un nouveau mod&#xE8;le de navigation pour des applications web.</strong> Contrairement aux applications conventionnelles o&#xF9; chaque &#xE9;cran remplace le pr&#xE9;c&#xE9;dent, Kaiten empile les &#xE9;crans c&#xF4;te &#xE0; c&#xF4;te horizontalement, comme des colonnes, et offre &#xE0; l'utilisateur une exp&#xE9;rience de navigation tout en continuit&#xE9;. <a href="http://www.officity.com/kaiten/">Plus d'info sur Kaiten&#x2026;</a></p>
+						<p><strong>Kaiten tire son nom de <a href="http://fr.wikipedia.org/wiki/Kaitenzushi">kaiten-zushi</a></strong>, le restaurant o&#xF9; les <a href="http://fr.wikipedia.org/wiki/Sushi">sushis</a> sont pr&#xE9;sent&#xE9;s sur un tapis roulant continu. Tout comme le tapis roulant, Kaiten pr&#xE9;sente les &#xE9;crans en les bougeant sur un espace continu et infini.</p>
+						<p>Pour une utilisation int&#xE9;gr&#xE9;e, t&#xE9;l&#xE9;chargez <a class="k-exit" href="https://addons.mozilla.org/fr/firefox/addon/kaitenbrowser/">l'extension KaitenBrowser pour Firefox</a> !</p>
+						<p><strong>Kaiten est un logiciel libre</strong> &#xE9;crit en Javascript. Vous pouvez t&#xE9;l&#xE9;charger Kaiten sous la forme d'un plug-in jQuery et cr&#xE9;er vos propres applications et connecteurs.</p>
+						<p><strong>Kaiten est un composant d'<a href="http://www.crunchbase.com/product/officity">Officity</a></strong>, une plateforme d'applications web <a href="http://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU">open source</a>. <a href="http://www.officity.com/">Plus d'information sur Officity&#x2026;</a></p>
+						<p>Kaiten et Officity sont des logiciels de <a href="http://www.crunchbase.com/company/nectil">Nectil</a>, une soci&#xE9;t&#xE9; bas&#xE9;e &#xE0; Bruxelles, sp&#xE9;cialis&#xE9;e dans la cr&#xE9;ation d'applications de gestion sur mesure. <a href="http://www.nectil.com/fre/">Plus d'information sur Nectil&#x2026;</a></p>
+						<p class="warning rounded-corners"><em>Pour cette d&#xE9;monstration, nous n'avons int&#xE9;gr&#xE9; que les fonctionnalit&#xE9;s de base de Wikipedia, Twitter, et Crunchbase. <strong>Kaiten est <a href="http://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU">open source</a> et tout le monde peut cr&#xE9;er des connecteurs</strong>. T&#xE9;l&#xE9;chargez Kaiten, cr&#xE9;ez vos connecteurs, et envoyez-nous vos impressions!</em>
+						</p>
+					</div>
+				</div>
+			</div>
+			<img src="kaitenbrowser/images/kaiten-splash-1024x768.png" title="Kaiten Browser"/>
+		</div>
+		<div id="container"></div>
+		<script type="text/javascript">
+			document.body.removeChild(document.getElementById('content'));
+
+			$(function(){
+				// keep a reference to Kaiten's container
+				$K = $('#container');
+				// initialize Kaiten
+				$K.kaiten({
+					columnWidth : '400px',
+					connectors : [ window.kConnectors.wikipedia, 
+					               window.kConnectors.twitter,
+					               window.kConnectors.crunchbase
+					             ],
+					startup : function(dataFromURL) {
+						// display home page
+						this.kaiten('load', function(data, $panel, $kaiten){
+							var $kt = kTemplater.jQuery;
+							var trad = window.kConnectors.languages;
+						 	
+							$panel.kpanel('setTitle', 'Kaiten');
+							$panel.kpanel({ cssClass:"kaitenbrowser" });
+							
+							var $body = $kt('panel.body');
+							$kt('block.navigation')
+								.append($kt('line.summary',{
+											id:'translate-home-summary',
+											iconURL:'kaitenbrowser/images/kaiten-32.png',
+											label:trad.get('home-summary').label,
+											info:trad.get('home-summary').info
+										})
+									)
+								.append($kt('line.summary',{
+											iconURL:'kaitenbrowser/images/wikipedia-32.png',
+											label:'Wikipedia',
+											info:''
+										})
+									)
+								.append($kt('line.search').submit(function(evt){
+											evt.preventDefault();
+											var query = $(this).find('input:text').val();
+											$kaiten.kaiten('load', {
+												kConnector:'wikipedia.search',
+												query:query,
+												title:trad.get('search')+' '+query,
+												kTitle : trad.get('search')+' '+query
+											},$(this));
+										})
+									)
+								.append($kt('line.navigation',{
+											id:'translate-navmain',
+											label:trad.get('navmain').label,
+											iconURL:'kaitenbrowser/images/wikipedia-16.png',
+											data:{
+												kConnector:'wikipedia.page',
+												kWidth:'800px'
+											}
+										})
+									)
+								.append($kt('line.navigation',{
+										id:'translate-navlang',
+										label:trad.get('navlang').label,
+										info:languages[window.kConnectors.wikipedia.currentLanguage],
+										data:{
+											kConnector:'wikipedia.languages',
+											kTitle:trad.get('navlang').label
+										}
+									})
+								)
+								.append($kt('line.summary',{
+										iconURL:'kaitenbrowser/images/twitter-32.png',
+										label:'Twitter',
+										info:''
+									})
+								)
+								.append($kt('line.search').submit( function(e) {
+										e.preventDefault();
+										var query = $(this).find('input:text').val();
+										$K.kaiten('load', { kConnector:'twitter.search', q:query , title:'Search: '+query },$(this));
+									})
+								)
+								.append($kt('line.navigation',{
+										label:'Twitter Timeline',
+										iconURL:'kaitenbrowser/images/twitter-16.png',
+										data:{
+											kConnector:'twitter.timeline',
+											kTitle:'Twitter Timeline'
+										}
+									})
+								)
+								.append($kt('line.summary',{
+										iconURL:'kaitenbrowser/images/crunchbase-32.png',
+										label:'Crunchbase',
+										info:''
+									})
+								)
+								.append($kt('line.search').submit( function(e) {
+										e.preventDefault();
+										var query = $(this).find('input:text').val();
+										$K.kaiten('load', { kConnector:'crunchbase.search', query:query , kTitle:'Search '+query },$(this));
+									})
+								)
+								.appendTo($body);
+
+							$kt('block.content',{
+								content: trad.get('home-content'),
+								id:'translate-home-content'
+							}).appendTo($body);
+
+							return $body;	
+						});
+						// handle data passed through the URL
+						if (dataFromURL)
+						{
+							this.kaiten('load', dataFromURL);
+						}
+					}
+				});	
+			});			
+		</script>			
+	</body>
+</html>

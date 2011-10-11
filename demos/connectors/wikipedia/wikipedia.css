@@ -1,0 +1,352 @@
+
+/* show/hide buttons */
+.k-panel .k-collapsed
+{
+	display:none;
+}
+
+/* footer */
+.k-panel .nectil-footer
+{
+	text-align:center;
+	margin-top:20px;
+	font-style:italic;
+	padding:5px;
+}
+
+/* BODY CONTENT */
+
+.k-panel.wikipedia .panel-body
+{
+	font-size:105%;
+}
+
+.k-panel.wikipedia .block{
+	padding: 10px;
+}
+.k-panel.wikipedia h1{
+	padding: 8px 0 0 0;
+}
+
+.k-panel.wikipedia h1,
+.k-panel.wikipedia h2,
+.k-panel.wikipedia h3,
+.k-panel.wikipedia h4,
+.k-panel.wikipedia h5,
+.k-panel.wikipedia h6
+{
+    overflow: hidden;
+    padding: 0.5em 0 0.17em 0;
+    width: auto;
+}
+
+.k-panel.wikipedia h1,
+.k-panel.wikipedia h2
+{
+	font-weight: normal;
+}
+.k-panel.wikipedia h3,
+.k-panel.wikipedia h4,
+.k-panel.wikipedia h5,
+.k-panel.wikipedia h6
+{
+	font-weight:bold;
+	border:0 none;
+}
+
+.k-panel.wikipedia .block p
+{
+	line-height: 1.5em;
+    margin: 0.4em 0 0.5em 0;
+}
+
+/*.k-panel .panel-body table
+{
+	width:auto;
+	border-collapse: collapse;
+}
+*/
+.k-panel.wikipedia ul
+{
+	margin:0 0 0 15px;
+}
+.k-panel.wikipedia ol
+{
+	margin: 0.3em 0px 0px 3.2em;
+}
+.k-panel.wikipedia .panel-body table
+{
+	width:auto;
+}
+
+.infobox
+{
+	float:right;
+	clear: right;
+    background-color: #F9F9F9;
+    border: 1px solid #AAAAAA;
+    margin: 0.5em 0 0.5em 1em;
+    padding: 0.2em;
+}
+
+.mbox-small 
+{
+    clear: right;
+    float: right;
+    margin-top: 4px 0 4px 1em;
+}
+
+.tleft
+{
+	clear: left;
+    float: left;
+    margin: 0.5em 1.4em 1.3em 0;
+}
+
+.tright
+{
+	clear: right;
+    float: right;
+    margin: 0.5em 0 1.3em 1.4em;
+}
+
+div.thumbinner 
+{
+    background-color: #F9F9F9;
+    border: 1px solid #CCCCCC;
+    overflow: hidden;
+    padding: 3px !important;
+    text-align: center;
+    min-width: 100px;
+}
+
+.editsection,
+.magnify
+{
+	display:none;
+}
+.gotowiki{
+	float:right;
+}
+
+/* gallery */
+ul.gallery 
+{
+    display: block;
+    margin: 2px;
+    padding: 2px;
+}
+ul.gallery, li.gallerybox 
+{
+    display: inline-block;
+}
+li.gallerybox 
+{
+    background-color: #F9F9F9;
+    border: 2px solid white;
+    vertical-align: top
+}
+li.gallerybox div.thumb 
+{
+    border: 1px solid #CCCCCC;
+    margin: 2px;
+    text-align: center;
+}
+div.gallerytext 
+{
+   	overflow: hidden;
+    padding-top: 2px 4px;
+    word-wrap: break-word;
+}
+
+/* summary */
+/*h2.summary-title
+{
+	background-image:url('images/toc.png');
+}*/
+
+table#summary{
+	border-collapse:collapse;
+	width:100% !important;
+}
+
+#summary th,
+#summary td{
+	border:1px solid #cccccc;
+	padding-top:8px;
+	padding-bottom:8px;
+	padding-left:4px;
+	padding-right:4px;
+}
+
+/* toc */
+#toc
+{
+    background-color: #F9F9F9;
+/*    border: 1px solid #AAAAAA;*/
+    margin: 5px;
+	border-right:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+}
+
+/*h2.toc-title
+{
+	background-image:url('images/toc.png');
+}*/
+#toc, #toc ul
+{
+	/*margin: 0;*/
+    list-style-image: none;
+    list-style-type: none;
+    text-align: left;
+}
+#toc li{
+	padding-left: 30px;
+	background: -moz-linear-gradient(center top , #fefefe, #f6f6f6) repeat scroll 0 0 #f6f6f6;
+	background: -webkit-gradient(linear, left top, left bottom,from(#fefefe),to(#f6f6f6)) repeat scroll 0 0 #f6f6f6;
+	border-top:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+}
+#toc a{
+	display:block;
+	font-weight: bold;
+	line-height: 25px;
+	color: #0645AD;
+}
+#toc li:hover{
+	background: -moz-linear-gradient(center top , #efefef, #d6d6d6) repeat scroll 0 0 #d6d6d6;
+	background: -webkit-gradient(linear, left top, left bottom,from(#efefef),to(#d6d6d6)) repeat scroll 0 0 #d6d6d6;
+	cursor:pointer;
+}
+
+#toc a:hover{
+	background: transparent;
+	cursor:pointer;
+}
+
+.wikiImageView{
+	overflow-y:auto;
+}
+.wikiImageView img {
+	width:100%;
+}
+
+
+.items .searchmatch{
+	color:royalblue;
+}
+.items.k-active .searchmatch{
+	color:red;
+}
+
+.results-browser{
+	width:100%;
+	height:34px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+
+.results-browser .left{
+	vertical-align: middle;
+	line-height:34px;
+	height: 34px;
+	text-align:left;
+	float:left;
+	padding-left:6px;
+}
+
+.results-browser .center{
+	text-align:center;
+	width:100%;
+	height: 34px;
+}
+.results-browser .center span.selectable{
+	display:inline-block;
+	border:1px solid #cccccc;
+	text-decoration:none;
+	color: #969899;
+	padding:2px 6px;
+	margin: 6px 2px;
+	cursor:pointer;
+}
+.results-browser .center span.selected{
+	display:inline-block;
+	padding:2px 6px;
+	margin: 6px 2px;
+}
+
+.results-browser .right{
+	vertical-align: middle;
+	line-height:34px;
+	height: 34px;
+	text-align:right;
+	float:right;
+	padding-right:6px;
+}
+
+
+/* Content specific style */
+
+.bandeau,.ambox{
+	margin: 8px 10px 12px;
+	border: 1px solid black;
+}
+.bandeau-icone,.mbox-image{
+	padding-right: 10px;
+}
+.bandeau-titre,mbox-title{
+	font-size: 1em;
+	line-height: 1.4em;
+	margin-bottom: 2px;
+	padding: 4px 10px;
+}
+.bandeau-texte,.mbox-text{
+	font-size: 0.9em;
+	line-height: 1.2em;
+	padding: 4px 10px;
+}
+
+.wikitable{
+	background: #F9F9F9;
+	border: 1px solid #AAA;
+	border-collapse: collapse;
+	color: black;
+	margin: 1em 1em 1em 0px;
+}
+.wikitable th, .wikitable td{
+	border: 1px solid #AAA;
+	padding: 0.2em;	
+}
+
+/* -- added by francois: home -- */
+
+.k-panel.wikipedia.wikipedia-home .block p
+{
+	font-size:1em;
+	margin-bottom: 1em;
+	clear:left;
+}
+
+.k-panel.wikipedia.wikipedia-home .block p.warning
+{
+	background-color:#eee;
+	padding:1em;
+}
+
+.k-panel.wikipedia.wikipedia-home .block img
+{
+	float:left;
+	margin:.4em 8px 8px 0;
+}
+
+/* -- added by francois: page -- */
+
+.k-panel.wikipedia div.floatright,
+.k-panel.wikipedia table.floatright {
+    border: 0 none;
+    clear: right;
+    float: right;
+    margin: 0 0 0.5em 0.5em;
+    position: relative;
+}

@@ -1,0 +1,91 @@
+.k-panel.twitter{}
+
+.k-panel.twitter .photo {
+	margin-right: 5px;
+    float: left;
+    clear: left;
+}
+
+.k-panel.twitter .photo.normal {
+	margin-bottom:25px;
+	margin-top:2px;
+	width:48px;
+	height:48px;
+}
+
+.k-panel.twitter .photo.bigger {
+	margin-bottom:20px;
+	width: 73px;
+    height: 73px;
+}
+
+.k-panel.twitter h2,
+.k-panel.twitter h3,
+.k-panel.twitter h4 {
+	margin:2px 0;
+}
+
+.k-panel.twitter .profile {
+	background: -o-linear-gradient(top, #f3f3f3, #fafafa) repeat scroll 0 0 #fafafa;
+	background: -moz-linear-gradient(top, #f3f3f3, #fafafa) repeat scroll 0 0 #fafafa;
+	background: -webkit-gradient(linear, left top, left bottom,from(#f3f3f3),to(#fafafa)) repeat scroll 0 0 #fafafa;
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+	min-height: 82px;
+}
+
+.k-panel.twitter .profile h3 {
+	color:#666;
+}
+
+.k-panel.twitter .profile h3 small {
+	font-weight:normal;
+}
+
+.k-panel.twitter .profile p {
+	color:gray;
+	font-size:12px;
+	padding:0;
+}
+
+.k-panel.twitter .tweet {
+	padding:8px;
+	min-height:70px;
+	background: -o-linear-gradient(top , #fafafa, #f3f3f3) repeat scroll 0 0 #f3f3f3;
+	background: -moz-linear-gradient(top , #fafafa, #f3f3f3) repeat scroll 0 0 #f3f3f3;
+	background: -webkit-gradient(linear, left top, left bottom,from(#fafafa),to(#f3f3f3)) repeat scroll 0 0 #f3f3f3;
+	border-top: 2px solid #fff;
+	border-bottom: 1px solid #ccc;
+	opacity:.9;
+}
+
+.k-panel.twitter .translucid {
+	opacity:.9;
+}
+
+.k-panel.twitter .tweet h4 {
+	font-size:13px;
+}
+.k-panel.twitter .tweet h4 small {
+	font-size:10px;
+	font-weight:normal;
+	font-style:normal;
+	color:#666;
+}
+.k-panel.twitter .tweet h4 span {
+	font-weight:normal;
+	font-size:10px;
+	margin:2px 0;
+	float:right;
+	clear:right;
+	color:#666;
+}
+
+.k-panel.twitter .tweet p {
+	font-size:12px;
+	line-height:16px;
+}
+
+.k-panel.twitter .tweet a.link-profile {
+	padding: 0;
+}

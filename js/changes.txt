@@ -1,0 +1,234 @@
+KAITEN 1.1, 2011-10-07
+------------------------------------------------------------------------------------------------------------------------------
+
+Tested with : 
+	Firefox:			4 => 7
+	Safari:				5.0.5 => 5.1
+	Chrome:				12.0.742.100 => 14.0.835.202
+	Opera:				11.11 => 11.50
+	Internet Explorer: 	9
+
+Kaiten
+------
+
++ IE9 support
++ Fixed a small bug : kTitle should not be set when clicking on a link with no text
++ toggleOptions : moved title click handler code to titlebar click handler 
++ Fixed a small bug : clicking on a focused panel should not try to set focus again
++ setColumnsCount : fixed snapping formula
++ Added "k-newtab" css class => navigables loaded in a new tab
++ Disabled keyboard navigation for touchscreen devices
++ Added downloadable elements, downloaded via an iframe
++ Added base path to Kaiten's state (the path to the folder containing "jkaiten.js")
++ _setPanelFocus : check if document.activeElement exist before trying to do something with it (IE9 support)
++ Fixed a keyboard navigation bug : conflict between ctrl-C (copy) and "normal" "C" key press
++ Links with href="javascript:..." are not handheld by Kaiten
++ Small optim : topBarHeight is calculated out of _computeDimensions
++ We don't assume no more that Kaiten's container is always the whole window
++ _computeDImensions : use k-window width / height to calculate panel layouts
++ Integrated Ben Alman jQuery resize event plugin (http://benalman.com/projects/jquery-resize-plugin/)
++ Adjustment : no more Math.floor on columns width calculations, let the browsers round those values
++ Added new "html.dom" connector to retrieve panel content from a (hidden) DOM element
++ Various code changes/improvments thanks to Julien Gonzalez (julien@nectil.com)
++ "html.page" connector : data can be sent to the url
++ Keyboard navigation : discard if the active element is an input
++ New tabs : window.open(url, name) is called with a sanitized name (IE9 support)
++ Renamed panelOptionsHTML to defaultPanelTitleBarOptions
++ Rewrote load, remove and removeChildren to allow the panels loading/destruction to be discarded, see Panel changes
++ Added $.fn.reverse, a utility function that reverse the order of a jQuery elements collection
++ load : you can directly pass a string or a jQuery object 
++ connectors : can now be grouped into collection, with "global" "connectable", "init" and "destroy" functions
++ options > connectors : changed type to Array, which values can be connectors and/or connectors collections
++ Added the connectors/connectors-templates.js file, to provide a basis that should help developers create connectors/collection of connectors
+
+Panel
+-----
+
++ toggleLoader : loader is now moved to the desired container before toggling
++ toggleLoader : can add a loader to any panel element (e.g. a block within the panel body)
++ toggleLoader : disable/enable overflow-y
++ Disabled autofocus for touchscreen devices
++ setTitle : use jQuery to strip tags and decode entities
++ Removed padding from width computations, thanks to the "box-sizing" CSS property
++ Removed layout mode switching capability, the "panelscroll" layout mode cannot exist because the title bar position must always be fixed
++ Improved load : better error reporting when loading fails
++ Improved load : handles local (filesystem) AJAX calls, allowing Kaiten to work without any web server
++ newTab : window.open(url, name) is called with a sanitized name (IE9 support)
++ Renamed optionsHTML to titleBarOptions
++ Titlebar options are now opened by a double-click
++ Titlebar options : by default, insert a "remove panel" clickable item
++ Fixed a bug : when a loader function returns a jQuery element, the events/data are lost when reloading the panel
++ Added "auto" optimal width : allow the panel to occupy the remaining free space on the screen
++ Rewrote the destroy function : destroying a panel automatically destroys its children panels
++ Added a way to discard the destruction of a panel/group of panels ; 
+  the "beforedestroy" callback (see panel options) can return false or the "kpanelbeforedestroy" event handler can use preventDefault()
+  after the callback has returned, a call to kaiten('execPanelDestroyAction') provides a way to performs the action at the origin of the destruction
+  otherwise a call to kaiten('discardPanelDestroyAction') must be made to discard the action at the origin of the destruction
++ Rewrote load
++ reload : removed the keepChildren argument
++ setPositionAndWidth is now a private method
++ Added the "onrefresh" option, providing a way for the developer to perform some actions when the panel content
+  has to be refreshed, without reloading the whole panel content
+
+Breadcrumb
+----------
+
++ Added ctrl-click to open target panel in a new tab
++ Changed document title generation : using char "◀" as separator
++ Changed the appearances of the visible items : removed the white arrows for blue background images, changed markup, rewrote toggleVisibility
++ Added pop()
+
+Templater
+---------
+
++ Changed "summary" markup
++ Removed _$body, _$header, _$block, _$elem - pass "type" parameter to _elem instead
++ Added JsDoc comments
++ Renamed _navigation to _navigable
++ _navigable : changed the strip tags method (use jQuery instead of a regular expression)
++ Added _downloadable
+
+CSS
+---
+
++ Set "#menu-container" height to avoid small bug in Opera
++ Changed ".summary" rules
++ Changed k-panel box-sizing to "border-box"
++ Added width:100%; and height:100%; to "html" and "body"
++ Changed tool buttons to fit the title bar's height, changed images/sprites-32.png 
++ Set "#k-breadcrumb li a" width to "auto" (IE9 support)
++ Added background-color fallbacks for all gradients
++ Added .clickable .tail class
++ Changed .items .label "word-wrap: break-word;" to "white-space:nowrap;"
++ Added a color for the items being k-active and k-focus at the same time
++ Reset p to font-size:1.0em
++ Breadcrumb items : changed the visibility rules (use of blue background images)
+
+KAITEN 1.0.2 CHANGE LOG
+------------------------------------------------------------------------------------------------------------------------------
+
+Current release :	v1.0.2
+Release date :		2011-06-17
+
+
+Kaiten
+------
+
++ Rewrote remove() and removeChildren(), added code to prevent an empty slider when all visible panels have been removed
++ removeChildren() : added "andSelf" argument
++ Changed topbar mask creation
++ Layout : removed _toggleLayout, layout is automatically disabled when slider is hidden
++ Markup : the options container becomes the application menu, added new tab button
++ Click event delegation only for navigables in header and body
++ Changed the touchscreen detection method (uses ontouchstart, not the user agent)
++ Integrated Joe Hewitt scrollability (http://joehewitt.github.com/scrollability) + conditional async js loading
++ Optimized/rewrote _onType
++ Added jQuery plugin getPanel()
++ Added custom HTML options for all panels, displayed when title is clicked
++ Removed jquery.easing.1.3.js, easing functions are part of jquery-ui-1.8.11.custom.min.js
++ Removed mouseover handlers for navigable elements, use CSS instead
++ Add real focus on keyboard-selected navigation item
++ Added "bodylayout" event, used when custom panel options are displayed
++ Added version number and copyright in the options dialog (footer)
++ Simplify event delegation selectors for connectables <a> elements
++ Panel toolbar : rearranged icons, added remove et reload panel
+
+Panel
+-----
+
++ Removed left/right toolbars width calculation, set fixed width via CSS (72px)
++ toggleLoader simplified : compute loader position using position().top
++ Cosmetics : if columnsCount=1, hide maximize button during animation
++ Added custom HTML options, displayed when title is clicked
++ Added _doNavItemsLayout
++ Changed titlebar <a> tools to buttons in order to simplify event delegation for connectables <a> elements
++ Added layout mode switching capability (default or panelscroll)
++ Added code to automatically create a body when no header/body has been found in the loaded content
++ Toolbar : rearranged icons, added remove et reload panel 
+
+Breadcrumb
+----------
+
++ Miscalculation of the application menu width fixed
+
+Templater
+---------
+
++ Added low-level functions _elem and _$elem
++ Added .jQuery('panel.header') and .jQuery('panel.body')
++ Corrected : ID attribute is not set if no ID is provided in the config object
++ Added : can set an ID on search forms
++ Changed "summary" items markup and config: we use "label" (config.label) and "info" (config.info) instead of "h2" (config.title) and "p" (config.text)
++ Changed quick search form markup, the magnifier is a search button
+
+CSS
+---
+
++ Added "mask-20" class
++ The options container becomes the application menu
++ toolbar left/right : width set to 72px (32 + 16+4 + 16+4)
++ Renamed "header" and "body" classes to "panel-..." classes
++ Removed border-top from "items:first-child"
++ Added border-bottom to "summary" items
++ Use pseudo-class ":hover" instead of ".k-hover"
++ Added ".border-box-sizing", ".centered-text"
++ Added rules for the options dialog footer
++ Changed quick search form layout
++ Overflow:hidden for ".panel-options" and ".panel-header"
++ Set mask z-index to 101, options dialog to 102
+
+
+
+KAITEN 1.0.1 CHANGE LOG
+------------------------------------------------------------------------------------------------------------------------------
+
+Current release :	v1.0.1
+Release date :		2011-05-31
+
+
+General
+-------
+
+Upgrade to jQuery 1.6.1
+Opera is now supported
+
+Kaiten
+------
+
++ load() can accept function or string as parameter
++ Removed refresh
++ newTab : moved code to Panel
++ _doNavItemLayout (mouseover + focus w keyboard)
++ Clear navitem focus when set panel focus
++ Renamed findConnector to findLoaderData
++ _setOption : added connectors registration there
++ _setOption : added optionsSelector change
++ load() now returns the jQuery panel object
++ Added a dedicated handler for "no-nav" elements w stopPropagation
++ _onClickLink : ignore <a href="#"> elements
++ Selectors : add ":visible" to ".navigable"
++ Fixed newTab: incorrect code!
++ Keyboard navigation : prevent error when clicking right arrow when content is not fully set
+
+Panels
+------
+
++ Tools definitions + click event delegation have moved to Kaiten
++ Removed the delay between appending new content and removing the panel loader
++ Removed refresh()
++ Added afterload, afterlayout and beforedestroy options
++ newTab : moved code from Kaiten
++ Removed prev and next
++ Bug fixed : making a new content loading before the end of the animation did not load the new content
++ Added setPositionAndWidth for _doLayout
++ Bug fixed : keyboard navigation broken when reusing child panel
+
+CSS
+---
+
++ Renamed classes : k-hover, k-active, k-focus
++ Added gradient for IE (yes we can)
++ Renamed nav-arrow class to tail and changed its dimensions (30x30)
++ Added Opera gradients
++ Modified .ajax-loader : height:100%
++ Added <button> cursor style

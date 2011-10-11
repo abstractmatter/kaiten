@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Kaiten</title>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16" />
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.css" />
+		<script type="text/javascript" src="../js/jquery-1.6.2.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui-1.8.11.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jkaiten.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script type="text/javascript">
+			(function($){
+				// initialize Kaiten
+				var $pOptions = kTemplater.jQuery('block.navigation');
+				$pOptions.append(kTemplater.jQuery('line.navigation', {
+					label : 'Go to Kaiten\'s website',
+					data : { kConnector:"iframe", url:"http://www.nectil.com/kaiten" },
+					iconURL : '../images/kaiten-boxed-favicon.png'
+				}));
+				$pOptions.append(kTemplater.jQuery('line.navigation', {
+					label : 'All demos',
+					data : { kConnector:"iframe", url:"../index.html" }
+				}));
+				$pOptions.append(kTemplater.jQuery('line.navigation', {
+					label : 'Help...',
+					data : { kConnector:"html.string", kTitle:"Help", html:"<div class=\"block\"><h1>Help</h1></div>" }
+				}));
+				
+				$('#container').kaiten({
+					defaultPanelTitleBarOptions : $pOptions,
+					startup : function(){
+						// create interface elements by using the templater 
+						// content block
+						var $contentBlock = kTemplater.jQuery('block.content', { content : '<h1>Templating</h1><p>You can use Kaiten\'s templater to build all kind of interface elements, such as content blocks (like this one), navigation blocks, navigable elements, clickable elements, downloadable elements, etc. The templater can return HTML strings or jQuery objects, which, in this case, makes it easy to add event handlers.</p><p>Double-click on the panel title to view the custom options.</p>' });
+						
+						// navigation block
+						var $navBlock = kTemplater.jQuery('block.navigation');
+						var $searchLine = kTemplater.jQuery('line.search', { text:'a keyword' }).submit(function(e){
+							e.preventDefault();
+							alert('Are you searching for "'+$(this).find('input:text').val()+'"?');
+						});
+						$navBlock.append($searchLine);
+						$navBlock.append(kTemplater.jQuery('line.summary', {
+							label	: 'Navigation templates',
+							info	: 'A summary element is contained in a navigation block & can hold a title with an icon and some text.',
+							iconURL : 'images/navigation-32.png'
+						}));
+						$navBlock.append(kTemplater.jQuery('line.navigation', {
+							label : 'Hello world!',
+							info : '1st version',
+							data : { kConnector:"html.string", kTitle:"Hello world!", html:"<div class=\"block\"><h1>Hello world!</h1></div>" }
+						}));
+						$navBlock.append(kTemplater.jQuery('line.separator', {
+							label : 'A separator',
+							info : '',
+							iconURL : 'images/info-16.png'
+						}));
+						var $hello = kTemplater.jQuery('block.content', { content : "<h1>Hello world!</h1>" });
+						$navBlock.append(kTemplater.jQuery('line.navigation', {
+							label : 'Another "Hello world!" example',
+							info : '2nd version',
+							data : { kConnector:"html.string", kTitle:"Another hello world!", html:$hello }
+						}));
+						$navBlock.append(kTemplater.jQuery('line.navigation', {
+							label : 'A last "Hello world!" example, with an icon',
+							info : '3rd version',
+							iconURL : 'images/earth-16.png',
+							data : { kConnector:"html.string", kTitle:"A last hello world!", html:$hello }
+						}));
+						$navBlock.append(kTemplater.jQuery('line.summary', {
+							label	: 'Another summary',
+							info	: 'Ideally, the dimensions of the summary icon should be 32x32. Below you\'ll find some clickable elements examples...',
+							iconURL : 'images/factory-32.png'
+						}));
+						$navBlock.append(kTemplater.jQuery('line.clickable', {
+							label : 'A clickable element',
+							info : 'click me!',
+							iconURL : 'images/cursor-16.png',
+							data : { msg : 'Yes you can!' }
+						}));
+						$navBlock.append(kTemplater.jQuery('line.clickable', {
+							label : 'Another clickable element',
+							info : 'click me!',
+							iconURL : 'images/cursor-16.png',
+							data : { msg : 'Yes you did!' }
+						}));
+						/*$navBlock.append(kTemplater.jQuery('line.downloadable', {
+							label : 'A downloadable element',
+							info : 'download me!',
+							iconURL : 'images/download-16.png',
+							url : ''
+						}));*/
+						
+						var $html = kTemplater.jQuery('panel.body', { content : $contentBlock.add($navBlock) });
+						
+						this.kaiten('load', function(data, $panel, $kaiten){
+							$panel.kpanel('setTitle', 'Advanced templating');							
+							return $html;
+						});
+
+						// use click event delegation for the clickable elements
+						this.delegate('.panel-body .clickable:not(.k-download)', 'click', function(e){
+							var $clickable = $(this),
+								data = $clickable.data('load');
+							alert(data.msg);
+						});
+					}
+				});
+			})(jQuery);
+		</script>			
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Kaiten</title>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16" />
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.css" />
+		<script type="text/javascript" src="../js/jquery-1.6.2.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui-1.8.11.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jkaiten.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
+	</head>
+	<body>
+		<div id="container"></div>
+		<div id="custom-options-text" class="hidden">
+			You can add your custom options here.<br /><br />
+			For more information and documentation, please visit our website :<br /><br />
+			<a href="http://www.nectil.com/kaiten" target="_blank">http://www.nectil.com/kaiten</a>
+		</div>
+		<script type="text/javascript">
+			(function($){
+				// keep a reference to Kaiten's container
+				$K = $('#container');
+				// initialize Kaiten
+				$K.kaiten({ 
+					// 3 panels max. on the screen
+					columnWidth : '33%',
+					optionsSelector : '#custom-options-text',
+					startup : function(dataFromURL){
+						// handle URL parameters sent when opening a panel in a new tab
+						if (dataFromURL && dataFromURL.kConnector) // checking kConnector allows the home panel to be opened in a new tab
+						{
+							this.kaiten('load', dataFromURL);
+						}
+						else
+						{
+							// create the home panel HTML...
+							var $navBlock = kTemplater.jQuery('block.navigation');
+							
+							$navBlock.append(kTemplater.jQuery('line.summary', {
+								label	: 'A basic navigation example',
+								info	: 'Click on any navigation item...<br /><br />'+
+											'You can also ctrl-click to open the target panel in a new tab',
+								iconURL : 'images/navigation-32.png'
+							}));
+							// ...add navigation to a page on our server...
+							$navBlock.append(kTemplater.jQuery('line.navigation', {
+								label : 'Load content from panel1.html',
+								data : { kConnector:"html.page", url:"sample-navigation/panel1.html", kTitle:"Panel 1" }
+							}));
+							// ...add navigation to a page on our server...
+							$navBlock.append(kTemplater.jQuery('line.navigation', {
+								label : 'Load content from panel2.html',
+								data : { kConnector:"html.page", url:"sample-navigation/panel2.html", kTitle:"Panel 2" }
+							}));
+							// ...add navigation to a page on our server...
+							$navBlock.append(kTemplater.jQuery('line.navigation', {
+								label : 'Load content from panel3.html',
+								data : { kConnector:"html.page", url:"sample-navigation/panel3.html", kTitle:"Panel 3" }
+							}));
+							// ...add navigation to a page outside our server
+							$navBlock.append(kTemplater.jQuery('line.navigation', {
+								label : 'Load external content from www.nectil.com/kaiten',
+								data : { kConnector:"iframe", url:"http://www.nectil.com/kaiten" }
+							}));	
+							
+							this.kaiten('load', function(data, $panel, $kaiten){
+								$panel.kpanel('setTitle', 'Basic navigation');							
+								return kTemplater.jQuery('panel.body', { content : $navBlock });
+							});
+						}
+					}
+				});
+			})(jQuery);
+		</script>			
+	</body>
+</html>

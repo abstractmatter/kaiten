@@ -1,0 +1,15 @@
+.k-panel.html.html-page p{
+	line-height: 1.4em;
+}
+.k-panel.html.html-page ul{
+	margin-left:25px;
+	margin-bottom:10px;
+	list-style-type:none;
+}
+.k-panel.html.html-page li{
+	margin-bottom:2px;
+	color:gray;
+}
+.k-panel.html.html-page li strong{
+	color:black
+}

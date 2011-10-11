@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Kaiten</title>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16" />
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.css" />
+		<script type="text/javascript" src="../js/jquery-1.6.2.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui-1.8.11.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jkaiten.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script type="text/javascript">
+			(function($){
+				// initialize Kaiten
+				$('#container').kaiten({ 
+					startup : function(){						
+						this.kaiten('load', function(data, $panel, $kaiten){
+							$panel.kpanel('setTitle', 'Simple templating');
+							
+							// create interface elements by using the templater 
+							var htmlContent = kTemplater.html('block.content', { content : '<h1>Templating</h1><p>You can easily use Kaiten\'s templater to build your HTML content, such as this block...</p>' });
+							htmlContent += kTemplater.html('block.content', { content : '<h1>is</h1><p>...or this one...</p>' });
+							htmlContent += kTemplater.html('block.content', { content : '<h1>easy!</h1><p>...or this one.</p>' });
+							
+							return '<div class="panel-body">'+htmlContent+'</div>';
+						});
+					}
+				});
+			})(jQuery);
+		</script>			
+	</body>
+</html>
