@@ -1,0 +1,116 @@
+.k-panel.boilerpipe
+{
+	font-size:100%
+}
+
+.panel-header .boilerpipe {
+	width:auto;
+	height:auto;
+	overflow:hidden;
+	padding:10px;
+	font-size:1.35em;
+	background-color:#b7b8b7;
+	background-image: -ms-linear-gradient(top, #F2F2F2 0%, #B7B8B7 100%);
+	background-image: -moz-linear-gradient(top, #F2F2F2 0%, #B7B8B7 100%);
+	background-image: -o-linear-gradient(top, #F2F2F2 0%, #B7B8B7 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F2F2F2), color-stop(1, #B7B8B7));
+	background-image: -webkit-linear-gradient(top, #F2F2F2 0%, #B7B8B7 100%);
+	background-image: linear-gradient(top, #F2F2F2 0%, #B7B8B7 100%);
+	min-width: auto;
+}
+
+.panel-header .boilerpipe .favicon {
+    background: url("../../../images/kaiten-boxed-favicon.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 16px;
+    margin-right: 6px;
+    width: 16px;
+}
+
+.panel-header .boilerpipe .boilerpipe-url {
+    width:100%;
+	padding:2px 0;
+}
+
+.boilerpipe-block {
+    height: 100%;
+    overflow: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.boilerpipe-content {
+    padding:10px;
+	font-family: Georgia,"Times New Roman",serif;
+	font-size:1.25em;
+}
+
+.boilerpipe-content * {
+    margin:0;
+	padding:0;
+	border:0 none;
+	clear:both;
+}
+
+/* re-style */
+
+a h1,a h2,a h3,a h4,a h5,a h6{
+	display:inline-block;
+}
+
+.boilerpipe-content h1{
+	line-height:1.25em;
+	margin:.6em 0 1em;
+	height:auto;
+}
+.boilerpipe-content h2{
+	line-height:1.25em;
+	margin:.6em 0 1em;
+}
+.boilerpipe-content h3{
+	line-height:1.25em;
+	margin:.6em 0 1em;
+}
+.boilerpipe-content h4{
+	line-height:1.25em;
+	margin:.6em 0 1em;
+}
+.boilerpipe-content h5{
+	line-height:1.25em;
+	margin:.6em 0 1em;
+}
+.boilerpipe-content h6{
+	line-height:1.25em;
+	margin:.6em 0 1em;	
+}
+.boilerpipe-content p{
+	line-height:1.4em;
+	margin:1.25em 0;
+}
+.boilerpipe-content img{
+	margin:5px 5px 5px 0;
+	float:left;
+	max-width:100%;
+	clear:both;
+}
+
+/* lists */
+
+.boilerpipe-content ul{
+	margin-left:25px;
+}
+.boilerpipe-content ul li{
+	
+}
+
+/* navigation lists */
+
+.boilerpipe-content ul.nav{
+	display: inline;
+	line-height: 1.8em;
+}
+.boilerpipe-content ul.nav li{
+	padding-left: 2px;
+	list-style: none;
+	display: inline;
+}

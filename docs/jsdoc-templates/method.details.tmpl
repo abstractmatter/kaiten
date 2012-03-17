@@ -1,0 +1,15 @@
+<div class="block">
+    <h1>{+data.symbol.name+}</h1>
+    <for each="sig" in="data.signatures">
+        <div class="docblock">
+            <p style="font-weight:bold">{+sig.name+}</p>
+            <for each="param" in="sig.params">
+                <p class="arg-desc">
+                    <span class="arg-type">{+param.type+}</span>
+                    <span class="arg-name">{+param.name+}</span>
+                    {+param.desc+}
+                </p>
+            </for>
+        </div>
+    </for>
+ </div>

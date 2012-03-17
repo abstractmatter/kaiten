@@ -2,7 +2,7 @@
 
 window.kConnectors.mycollection = {
 	// the collection name
-	collectionName : "collection name",
+	collectionName : "collectionname",
 	
 	// (optional) the relative path to the CSS file used by this collection (relative to the document)
 	cssFile		: 'collection.css',
@@ -17,7 +17,7 @@ window.kConnectors.mycollection = {
 	init		: function($kaiten){
 	},
 	
-	// (optional) desttroy function executed only once, when the connectors collection is unregistered
+	// (optional) destroy function executed only once, when the connectors collection is unregistered
 	destroy		: function($kaiten){
 	},
 	
@@ -26,7 +26,7 @@ window.kConnectors.mycollection = {
 	          	   	// the 1st connector in the collection
 	          	    {
 	          	    	// the connector name
-	          	    	name : "connector name",
+	          	    	name : "connectorname",
 	          	    	
 	          	    	// (optional) the relative path to the CSS file used by this connector (relative to the document)
 	          	    	cssFile : 'connector.css',
@@ -52,7 +52,7 @@ window.kConnectors.mycollection = {
 	    				init		: function($kaiten){
 	    				},
 	    				
-	    				// (optional) desttroy function executed only once, when the connector is unregistered
+	    				// (optional) destroy function executed only once, when the connector is unregistered
 	    				destroy		: function($kaiten){
 	    				}
 	          	    },

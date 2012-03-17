@@ -7,10 +7,10 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16" />
-		<link rel="stylesheet" type="text/css" href="../css/kaiten.css" />
-		<script type="text/javascript" src="../js/jquery-1.6.2.min.js">&#160;</script>
-		<script type="text/javascript" src="../js/jquery-ui-1.8.11.custom.min.js">&#160;</script>
-		<script type="text/javascript" src="../js/jkaiten.js">&#160;</script>
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.min.css" />
+		<script type="text/javascript" src="../js/jquery.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/kaiten.min.js">&#160;</script>
 		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
 	</head>
 	<body>
@@ -49,22 +49,26 @@
 							// ...add navigation to a page on our server...
 							$navBlock.append(kTemplater.jQuery('line.navigation', {
 								label : 'Load content from panel1.html',
-								data : { kConnector:"html.page", url:"sample-navigation/panel1.html", kTitle:"Panel 1" }
+								data : { kConnector:"html.page", url:"sample-navigation/panel1.html", kTitle:"Panel 1" },
+								iconURL : 'sample-navigation/images/star-16.png'
 							}));
 							// ...add navigation to a page on our server...
 							$navBlock.append(kTemplater.jQuery('line.navigation', {
 								label : 'Load content from panel2.html',
-								data : { kConnector:"html.page", url:"sample-navigation/panel2.html", kTitle:"Panel 2" }
+								data : { kConnector:"html.page", url:"sample-navigation/panel2.html", kTitle:"Panel 2" },
+								iconURL : 'sample-navigation/images/star-16.png'
 							}));
 							// ...add navigation to a page on our server...
 							$navBlock.append(kTemplater.jQuery('line.navigation', {
 								label : 'Load content from panel3.html',
-								data : { kConnector:"html.page", url:"sample-navigation/panel3.html", kTitle:"Panel 3" }
+								data : { kConnector:"html.page", url:"sample-navigation/panel3.html", kTitle:"Panel 3" },
+								iconURL : 'sample-navigation/images/star-16.png'
 							}));
 							// ...add navigation to a page outside our server
 							$navBlock.append(kTemplater.jQuery('line.navigation', {
 								label : 'Load external content from www.nectil.com/kaiten',
-								data : { kConnector:"iframe", url:"http://www.nectil.com/kaiten" }
+								data : { kConnector:"iframe", url:"http://www.nectil.com/kaiten" },
+								iconURL : 'sample-navigation/images/earth-16.png'
 							}));	
 							
 							this.kaiten('load', function(data, $panel, $kaiten){

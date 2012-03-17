@@ -13,7 +13,7 @@ if (!window.kConnectors)
 	window.kConnectors = {};
 }
 
-// _t will be used as a handy shortcut
+// _t will be used as a handy shortcut, but that is yet another global variable
 _t = window.kConnectors.twitter = {
 	// the collection name
 	collectionName : "twitter",
@@ -110,7 +110,7 @@ _t = window.kConnectors.twitter = {
 _t.addConnector({
 	name : "timeline",
 	connectable : function(href, $link){
-		var isTimeline = /^https?:\/\/twitter\.com(?:\/#!)?\/?$/;	  
+		var isTimeline = /^https?:\/\/twitter\.com(?:\/#!)?\/?$/i;	  
 		return isTimeline.test(href);
 	},
 	getData : function(href, $link){
@@ -158,7 +158,7 @@ _t.addConnector({
 _t.addConnector({
 	name : "search",
 	connectable : function(href, $link){
-		var isTwitterSearch  = /^https?:\/\/(?:search\.twitter\.com.*|twitter\.com\/#!\/search.*|twitter\.com\/search\?q\=.*)$/;
+		var isTwitterSearch  = /^https?:\/\/(?:search\.twitter\.com.*|twitter\.com\/#!\/search.*|twitter\.com\/search\?q\=.*)$/i;
 		return isTwitterSearch.test(href);
 	},
 	getData : function(href, $link){
@@ -221,9 +221,9 @@ _t.addConnector({
 _t.addConnector({
 	name : "tweets",
 	connectable : function(href, $link){
-		var	isTwitterSearch  = /^https?:\/\/(?:search\.twitter\.com.*|twitter\.com\/#!\/search.*)$/,
-			isTwitterAccount = /^https?:\/\/twitter\.com(?:\/#!)?\/\w+?(?!\/.*)(?:\?.*)?$/;	  
-		//	isTwitterAccount = /^https?:\/\/twitter\.com(?:\/#!)?\/\w+?(?!\/.*)$/;	  
+		var	isTwitterSearch  = /^https?:\/\/(?:search\.twitter\.com.*|twitter\.com\/#!\/search.*)$/i,
+			isTwitterAccount = /^https?:\/\/(www.)?twitter\.com(?:\/#!)?\/\w+?(?!\/.*)(?:\?.*)?$/i;	  
+		//	isTwitterAccount = /^https?:\/\/twitter\.com(?:\/#!)?\/\w+?(?!\/.*)$/;
 		return !isTwitterSearch.test(href) && isTwitterAccount.test(href);
 	},
 	getData : function(href, $link){
@@ -291,7 +291,7 @@ _t.addConnector({
 _t.addConnector({
 	name : "following",
 	connectable : function(href, $link){
-		var isFollowing = /^https?:\/\/twitter\.com(?:\/#!)?\/\w+?\/following\/?$/;	  
+		var isFollowing = /^https?:\/\/twitter\.com(?:\/#!)?\/\w+?\/following\/?$/i;	  
 		return isFollowing.test(href);
 	},
 	getData : function(href, $link){
@@ -343,7 +343,7 @@ _t.addConnector({
 _t.addConnector({
 	name : "followers",
 	connectable : function(href, $link){
-		var isFollowers = /^https?:\/\/twitter\.com(?:\/#!)?\/\w+?\/followers\/?$/;	  
+		var isFollowers = /^https?:\/\/twitter\.com(?:\/#!)?\/\w+?\/followers\/?$/i;	  
 		return isFollowers.test(href);
 	},
 	getData : function(href, $link){

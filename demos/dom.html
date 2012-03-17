@@ -7,10 +7,10 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16" />
-		<link rel="stylesheet" type="text/css" href="../css/kaiten.css" />
-		<script type="text/javascript" src="../js/jquery-1.6.2.min.js">&#160;</script>
-		<script type="text/javascript" src="../js/jquery-ui-1.8.11.custom.min.js">&#160;</script>
-		<script type="text/javascript" src="../js/jkaiten.js">&#160;</script>
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.min.css" />
+		<script type="text/javascript" src="../js/jquery.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/kaiten.min.js">&#160;</script>
 		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
 	</head>
 	<body>
@@ -27,7 +27,7 @@
 						<div class="summary">
 							<img src="images/book-32.png">
 							<div class="label">Kaiten's documentation</div>
-							<div class="info">(...)</div>
+							<div class="info"><em>This example shows how to retrieve content from the DOM. The main purpose of doing this is to allow the content of your application to be indexed by search engines.</em></div>
 						</div>
 						<div class="items navigable" data-load='{"kConnector":"html.dom","contentSelector":"#doc-storage #intro","kTitle":"Introduction"}'>
 							<div class="head">
@@ -60,6 +60,7 @@
 				<div class="panel-body">
 					<div class="block block-nav">
 						<div class="summary">
+							<img src="images/chapter-32.png">
 							<div class="label">Introduction</div>
 						</div>
 						<div class="items navigable" data-load='{"kConnector":"html.dom","contentSelector":"#doc-storage #intro-p1","kTitle":"What is Kaiten?"}'>
@@ -73,12 +74,34 @@
 					</div>
 				</div>
 			</div>
+			<div id="intro-p1" class="k-panel">
+				<div class="panel-body">
+					<div class="block block-nav">
+						<div class="summary">
+							<img src="../images/kaiten-32.png">
+							<div class="label">What is Kaiten?</div>
+						</div>
+					</div>
+					<div class="block">
+						<p>
+							<strong>Kaiten</strong> is a new navigation model for web applications that allows you to browse thru one or several applications in a single continuous space. <a href="http://kaitenbrowser.com/kaitenbrowser/video.html">Watch the video</a>.
+						</p>
+						<p>&nbsp;</p>
+						<p><strong>Kaiten is a new navigation model for web applications.</strong> Unlike conventional applications where each screen replace another, Kaiten stacks the screens side by side horizontally, like columns, and provides a continuous user experience. <a href="http://www.officity.com/kaiten/">More about Kaiten…</a></p>
+					</div>
+				</div>
+			</div>
 			<div id="c1" class="k-panel">
 				<div class="panel-body">
 					<div class="block block-nav">
 						<div class="summary">
+							<img src="images/chapter-32.png">
 							<div class="label">Chapter I</div>
+							<div class="info"><em>This is the first chapter.</em></div>
 						</div>
+					</div>
+					<div class="block">
+						<p>Work in progress...</p>
 					</div>
 				</div>
 			</div>
@@ -86,8 +109,13 @@
 				<div class="panel-body">
 					<div class="block block-nav">
 						<div class="summary">
+							<img src="images/chapter-32.png">
 							<div class="label">Chapter II</div>
+							<div class="info"><em>This is the second chapter.</em></div>
 						</div>
+					</div>
+					<div class="block">
+						<p>Work in progress...</p>
 					</div>
 				</div>
 			</div>

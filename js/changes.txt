@@ -1,3 +1,68 @@
+KAITEN 1.2, 2012-03-17
+------------------------------------------------------------------------------------------------------------------------------
+
+Tested with : 
+
+	Firefox:			4+
+	Safari:				5+
+	Chrome:				12+
+	Opera:				11+
+	Internet Explorer: 	8+
+
+General
+-------
+
++ Added : return false in connector' getData prevent the creation of a new panel 
++ Upgrade to jQuery 1.7
++ Upgrade to jQuery UI 1.8.16
++ Removed Scrollability
++ Renamed the global object jKaiten to Kaiten and all JS files accordingly
++ Removed version numbers from jQuery file names to simplify upgrades
++ Demos : added Boilerpipe connector demo and the optimal widths demo
+
+Kaiten
+------
+
++ Removed Scrollability script handling
++ IE8 compatibility
++ Added the "fallbackConnector" option : a default connector that will be used when clicking on a link for which no connector has been found
++ Refactored "_create" to improve code readability
++ Removed the "animsFiringRate" option
++ Keyboard navigation : inverted the action of the "+" (decrease columns count) and "-" (increase columns count) keys
+
+Panel
+-----
+
++ Fixed a bug in _insertHTML: if a markup with script tags is inserted without a panel header or a panel body div, the scripts are executed in the global context instead of the panel DOM element context
++ toggleLoader : when hiding the loader, move it to the panel so that it cannot be removed from DOM accidentally + fixed a small bug
++ Fixed a small bug (_insertHTML) : some HTML responses from the server were not correctly displayed in the panel body
++ Removed Scrollability
++ load: better error reporting
++ Rewrote/simplified how the destruction of a panel/group of panels can be discarded/restarted ; 
+  the "beforedestroy" callback (see panel options) can return false or the "kpanelbeforedestroy" event handler can use preventDefault()
+  after the callback has returned, a second call to kpanel('destroy') with proper arguments provides a way to force the panel to be destroyed or to 
+  retry the action at the origin of the destruction
++ Reload : added a "keepChildren" parameter for refreshing panel content without removing the panels @ right
+
+Breadcrumb
+----------
+
+Templater
+---------
+
+CSS
+---
+
++ Print : added @media print rules to print the focused panel
++ Breadcrumb : added a max-width in list items and text-overflow "ellipsis" for the links texts
++ Removed Scrollability special rules
++ Panel : added webkit-overflow-scrolling on panel-body
++ Panel : added text-overflow "ellipsis" for the panel title
++ Breadcrumb home icon is now 32x32px
++ Body and k-window: -webkit-tap-highlight-color added to neutralize the highlight on iOS
++ Removed webkit translate3d because of incompatibility with webkit-overflow-scrolling
++ Items (navigables, clickables, ...) : tail's arrow for navigables only
+
 KAITEN 1.1, 2011-10-07
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -7,6 +72,11 @@ Tested with :
 	Chrome:				12.0.742.100 => 14.0.835.202
 	Opera:				11.11 => 11.50
 	Internet Explorer: 	9
+
+General
+-------
+
+Upgrade to jQuery 1.6.2
 
 Kaiten
 ------
@@ -29,7 +99,7 @@ Kaiten
 + Integrated Ben Alman jQuery resize event plugin (http://benalman.com/projects/jquery-resize-plugin/)
 + Adjustment : no more Math.floor on columns width calculations, let the browsers round those values
 + Added new "html.dom" connector to retrieve panel content from a (hidden) DOM element
-+ Various code changes/improvments thanks to Julien Gonzalez (julien@nectil.com)
++ Various code changes/improvments thanks to Julien Gonzalez
 + "html.page" connector : data can be sent to the url
 + Keyboard navigation : discard if the active element is an input
 + New tabs : window.open(url, name) is called with a sanitized name (IE9 support)

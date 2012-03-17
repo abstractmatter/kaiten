@@ -7,10 +7,10 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16" />
-		<link rel="stylesheet" type="text/css" href="../css/kaiten.css" />
-		<script type="text/javascript" src="../js/jquery-1.6.2.min.js">&#160;</script>
-		<script type="text/javascript" src="../js/jquery-ui-1.8.11.custom.min.js">&#160;</script>
-		<script type="text/javascript" src="../js/jkaiten.js">&#160;</script>
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.min.css" />
+		<script type="text/javascript" src="../js/jquery.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/kaiten.min.js">&#160;</script>
 		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
 	</head>
 	<body>
@@ -38,7 +38,7 @@
 					startup : function(){
 						// create interface elements by using the templater 
 						// content block
-						var $contentBlock = kTemplater.jQuery('block.content', { content : '<h1>Templating</h1><p>You can use Kaiten\'s templater to build all kind of interface elements, such as content blocks (like this one), navigation blocks, navigable elements, clickable elements, downloadable elements, etc. The templater can return HTML strings or jQuery objects, which, in this case, makes it easy to add event handlers.</p><p>Double-click on the panel title to view the custom options.</p>' });
+						var $contentBlock = kTemplater.jQuery('block.content', { content : '<h1>Templating</h1><p>You can use Kaiten\'s templater to build all kind of interface elements, such as content blocks (like this one), navigation blocks (like the one below), navigable elements, clickable elements, downloadable elements, etc. The templater can return HTML strings or jQuery objects, for convenience.</p><p>Double-click on the panel title to view the custom options.</p>' });
 						
 						// navigation block
 						var $navBlock = kTemplater.jQuery('block.navigation');

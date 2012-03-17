@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Kaiten</title>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16" />
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.min.css" />
+		<script type="text/javascript" src="connectors/facebook/facebook.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/kaiten.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>		
+	</head>
+	<body>
+		<div id="container"></div>
+		<div id="custom-options-text" class="hidden">
+			You can add your custom options here.<br /><br />
+			For more information and documentation, please visit our website :<br /><br />
+			<a href="http://www.nectil.com/kaiten" target="_blank">http://www.nectil.com/kaiten</a>
+		</div>
+		<script type="text/javascript">
+			(function($){
+				$K = $('#container');
+				$K.kaiten({
+					columnWidth : '400px',
+					optionsSelector : '#custom-options-text',
+					startup : function(dataFromURL){
+						// handle URL parameters sent when opening a panel in a new tab
+						if (dataFromURL)
+						{
+							this.kaiten('load', dataFromURL);
+						}
+						else
+						{
+							// load home panel content
+							this.kaiten('load', {kConnector:'facebook.page',pageid:'185695894773827'});
+						}
+					},
+					connectors : [window.kConnectors.facebook]
+				});
+			})(jQuery);
+		</script>			
+	</body>
+</html>

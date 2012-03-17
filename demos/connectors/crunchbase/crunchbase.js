@@ -415,16 +415,19 @@ _c.addConnector({
 
 		$block.append(kTemplater.jQuery('line.navigation', {
 			label : 'Company',
+			iconURL:'connectors/crunchbase/images/company-16.png',
 			data : { kConnector:'crunchbase.company', permalink:'apple' }
 		}));
 
 		$block.append(kTemplater.jQuery('line.navigation', {
 			label : 'Person',
+			iconURL:'connectors/crunchbase/images/person-16.png',
 			data : { kConnector:'crunchbase.person', permalink:'steve-jobs' }
 		}));
 
 		$block.append(kTemplater.jQuery('line.navigation', {
 			label : 'Product',
+			iconURL:'connectors/crunchbase/images/product-16.png',
 			data : { kConnector:'crunchbase.product', permalink:'iphone' }
 		}));
 

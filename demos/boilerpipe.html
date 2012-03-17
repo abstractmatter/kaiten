@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Kaiten</title>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/png" href="../images/kaiten-boxed-favicon.png" sizes="16x16" />
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.min.css" />
+		<script type="text/javascript" src="../js/jquery.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/kaiten.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>		
+		<script type="text/javascript" src="connectors/boilerpipe/boilerpipe.js">&#160;</script>
+		<script type="text/javascript" src="connectors/boilerpipe/forms.js">&#160;</script>
+	</head>
+	<body>
+		<div id="demo-text" class="panel-body">
+			<div class="block">
+				<h1>Boilerpipe demo</h1>
+				<p>Kaiten uses the boilerpipe API to provide a new navigation experience, try this example : <a class="boilerpipe" href="http://nectil.com">nectil.com</a></p>
+				<p>&nbsp;</p>
+				<p>More information on boilerpipe can be found here : <a href="http://code.google.com/p/boilerpipe/">http://code.google.com/p/boilerpipe</a>.</p>
+			</div>
+		</div>
+		<div id="container"></div>
+		<script type="text/javascript">
+			(function($){
+				// initialize Kaiten
+				$K = $('#container');
+				$K.kaiten({ 
+					fallbackConnector : 'boilerpipe',
+					startup : function(){
+						var $content = $('#demo-text'),
+							content = $content.html();
+						$content.remove();
+                        var $panel = this.kaiten('load', content);
+                        $panel.kpanel('setTitle', 'Boilerpipe demo');
+					},
+					connectors : [window.kConnectors.boilerpipe]
+				});
+			})(jQuery);			
+		</script>	
+	</body>
+</html>

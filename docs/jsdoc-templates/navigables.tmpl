@@ -1,0 +1,8 @@
+<div class="block block-nav">
+    <for each="nav" in="data">
+        <div class="items navigable" data-load='{"kConnector":"html.dom","contentSelector":"#{+ nav.panelID +}","kTitle":"TODO"}'>
+			<div class="label">{+ nav.label +}</div>
+			<div class="info">{+ nav.info +}</div>
+		</div>    			
+    </for>
+</div>

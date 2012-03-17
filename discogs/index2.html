@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Kaiten</title>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/png" href="images/release-16.png" sizes="16x16" />
+		<link rel="stylesheet" type="text/css" href="../css/kaiten.min.css" />
+		<script type="text/javascript" src="../js/jquery.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery-ui.custom.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/kaiten.min.js">&#160;</script>
+		<script type="text/javascript" src="../js/jquery.ba-resize.min.js">&#160;</script>
+		<script type="text/javascript" src="underscore-1.2.1-min.js">&#160;</script>
+		<script type="text/javascript" src="backbone-0.5.3-min.js">&#160;</script>
+		<script type="text/javascript" src="mustache.js">&#160;</script>
+		<script type="text/javascript" src="discogs-backbone.js">&#160;</script>
+		<script type="text/javascript" src="discogs-connectors-v2.js">&#160;</script>
+		<script type="text/javascript" src="jquery.scroll-loader.js">&#160;</script>
+		<script type="text/javascript" src="popcorn-complete.min.js">&#160;</script>
+		
+		<!--script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-23187517-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script-->
+	</head>
+	<body>
+		<div id="container"></div>
+		<div id="custom-options" style="display:none;">
+			<span id="custom-info">A Kaiten Browser application using Discogs public API. Search for labels, artists and releases!<br /><br/>Feedback/suggestions : Marc Mignonsin <a href="mailto:marc@nectil.com">marc@nectil.com</a><br /><br />Visit <a href="http://www.nectil.com">www.nectil.com</a> for more infos.
+			</span>
+		</div>
+		<script type="text/javascript">
+			(function($){
+				/* KAITEN INITIALIZATION */
+				$K = $('#container');
+				$K.kaiten({ 
+					columnWidth : '480px',
+					optionsSelector : '#custom-options',
+					startup : function(dataFromURL){
+						this.kaiten('load', { kTitle:'Home', kConnector : 'discogs.home' });												
+						if (dataFromURL)
+						{
+							this.kaiten('load', dataFromURL);
+						}
+					},
+					connectors : [ window.kConnectors.discogs ]
+				});
+			})(jQuery);
+		</script>			
+	</body>
+</html>

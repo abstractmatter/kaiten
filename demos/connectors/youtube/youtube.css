@@ -1,0 +1,70 @@
+
+/* CHANNELS */
+
+#youtube-channel{
+	list-style: none;
+}
+#youtube-channel li{
+	clear:both;
+	margin: 10px 0;
+    min-height: 90px;
+}
+#youtube-channel li:first-child{margin-top: 0;}
+#youtube-channel li:last-child {margin-bottom: 0;}
+#youtube-channel li:hover {
+	background-color: #efefef;
+	-webkit-box-shadow:0 2px 3px #aaa;
+	   -moz-box-shadow:0 2px 3px #aaa;
+	        box-shadow:0 2px 3px #aaa;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+			border-radius: 5px;
+}
+
+#youtube-channel div.thumb{
+	float:left;
+}
+#youtube-channel div.description{
+	margin-left:125px;
+}
+#youtube-channel a {
+	padding:0;
+}
+#youtube-channel h4 {
+	font-size: 16px;
+	line-height: 18px;
+	color:#1c62be;
+}
+#youtube-channel a:hover h4 {
+	text-decoration:underline;
+}
+#youtube-channel p {
+	margin: 4px 0;
+}
+#youtube-channel p.author {
+	font-size:12px;
+	color:#999;
+}
+#youtube-channel p.meta {
+	font-size:11px;
+	color:#333;
+}
+
+/* VIDEOS */
+
+#youtube-video p {
+	font-size:12px;
+	line-height:18px;
+}
+
+#youtube-video p.keywords {
+	margin: 6px 0 10px;
+}
+
+
+
+#youtube-video iframe.youtube-player {
+	margin:20px 0;
+	display:block;
+	width:100%;
+}

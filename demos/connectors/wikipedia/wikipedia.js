@@ -235,7 +235,7 @@ _w = window.kConnectors.wikipedia = {
 					pagination.append('<span class="left">'+count+' hits</span>');
 					pagination.append('<span class="right">'+count+' hits</span>');
 					pagination.append(pages);
-					body.prepend(pagination).append(pagination.clone());
+					body.prepend(pagination).append(pagination.clone(true));
 				}
 				// add a footer
 				body.append(_w.footer);

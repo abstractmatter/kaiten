@@ -1,0 +1,152 @@
+.k-panel .block-nav .items.darken
+{
+	background: -o-linear-gradient(top,#efefef,#d6d6d6) repeat scroll 0 0 #d6d6d6;
+	background: -moz-linear-gradient(top,#efefef,#d6d6d6) repeat scroll 0 0 #d6d6d6;
+	background: -ms-linear-gradient(top,#efefef,#d6d6d6) repeat scroll 0 0 #d6d6d6;
+	/*background: -webkit-gradient(linear,left top,left bottom,from(#efefef),to(#d6d6d6)) repeat scroll 0 0 #d6d6d6;*/
+	background: -webkit-linear-gradient(#efefef, #d6d6d6);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr=#efefef, endColorStr=#d6d6d6)" !important;
+	background-color:#d6d6d6;
+}
+
+.k-panel .block-nav .items.search-header
+{
+	background: 0 none;
+}
+
+.no-hits
+{
+	border-bottom: 1px solid #CCCCCC;
+    color: #A0A0A0;
+    font-size: 2em;
+    padding: 2em 0;
+    text-align: center;
+}
+
+.k-panel.discogs
+{
+	font-size:105%;
+}
+
+.k-panel.discogs address
+{
+	font-style: normal;
+	margin-left:10px;
+}
+
+.k-panel.discogs h1,
+.k-panel.discogs h2,
+.k-panel.discogs h3,
+.k-panel.discogs h4,
+.k-panel.discogs h5,
+.k-panel.discogs h6
+{    
+    overflow: hidden;
+    padding: 0.5em 0 0.17em 0;
+    width: auto;
+}
+
+.k-panel.discogs h1,
+.k-panel.discogs h2
+{
+	font-weight: normal;
+	margin-bottom: 0.6em;
+}
+.k-panel.discogs h3,
+.k-panel.discogs h4,
+.k-panel.discogs h5,
+.k-panel.discogs h6
+{
+	font-weight:bold;
+	border:0 none;
+}
+
+.k-panel.discogs p
+{
+	line-height: 1.5em;
+    margin: 0.4em 0 0.5em 0;
+}
+
+.k-panel.discogs .block .details-thumb
+{
+	float:right;
+	margin:0 0 10px 10px;
+	text-align:center;
+}
+.k-panel.discogs .block .details-thumb img
+{
+	max-width:150px;
+	max-height:150px;
+}
+.k-panel .block .gallery-thumb
+{
+	float:left;
+	margin:0 10px 10px 0;
+	width:150px;
+	height:150px;
+	text-align:center;
+}
+.k-panel .block .gallery-thumb img
+{
+	max-width:150px;
+	max-height:150px;
+}
+
+.k-panel.discogs ul
+{	
+    margin:5px 0 0 20px;
+    list-style:square;
+}
+
+.k-panel.discogs ul.links
+{	
+    display:inline;
+    margin:0;
+}
+
+.k-panel.discogs ul.links li
+{	
+    background-color: #F3F3F3;
+    border-radius: 5px 5px 5px 5px;
+    display: inline-block;
+    margin: 2px;
+    padding: 4px;
+}
+
+.k-panel.discogs ul.enums
+{	
+    display:inline;
+    margin:0;
+    list-style:none;    
+}
+
+.k-panel.discogs ul.enums li
+{	
+    display: inline;
+    margin-left: 4px;
+}
+
+.k-panel.discogs .extra
+{
+	font-size:11px;
+	margin:3px 0 6px 26px;
+	list-style:none;
+	display:none;
+}
+
+.k-panel.discogs .toggle
+{
+	background:url(images/button-expand.gif) no-repeat left center;
+	padding-left: 11px;
+	margin-left:5px;
+	cursor:pointer;
+	text-decoration:none;
+}
+
+.k-panel.discogs .toggle.active
+{
+	background:url(images/button-collapse.gif) no-repeat left center;
+	padding-left: 11px;
+	cursor:pointer;
+	text-decoration:none;
+}
