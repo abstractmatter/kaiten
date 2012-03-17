@@ -5,7 +5,7 @@
 
     /* *** */
         
-    $API_KEY = 'c80d98a505';
+    $API_KEY = 'xxxxxxxx';
     
     /* *** */
     
