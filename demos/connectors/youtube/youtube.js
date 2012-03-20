@@ -1,9 +1,7 @@
-/* YOUTUBE CONNECTORS COLLECTION
-
+/*
+YOUTUBE CONNECTORS COLLECTION
 embed.ly regular expression : http://embed.ly/tools/generator
-
 /((http:\/\/(.*youtube\.com\/watch.*|.*\.youtube\.com\/v\/.*|youtu\.be\/.*|.*\.youtube\.com\/user\/.*|.*\.youtube\.com\/.*#.*\/.*|m\.youtube\.com\/watch.*|m\.youtube\.com\/index.*|.*\.youtube\.com\/profile.*|.*\.youtube\.com\/view_play_list.*|.*\.youtube\.com\/playlist.*))|(https:\/\/(.*youtube\.com\/watch.*|.*\.youtube\.com\/v\/.*)))/i
-
 */
 
 // namespace
@@ -45,51 +43,45 @@ var co = window.kConnectors.youtube = {
 	// 	return markup;
 	// },
 
-	markChannelUp : function(jsonxml){
-		var $xml,markup;
-		markup +=  '<ul class="channel" id="youtube-channel">';
+	markChannelUp : function(jsonxml,items){
+		var $xml = $(jsonxml), markup = '';
 
-		/*
-		<media:thumbnail url="http://i.ytimg.com/vi/vo6GM_r42C8/default.jpg" height="90" width="120" time="00:02:07.500" yt:name="default"/>
-		<yt:statistics favoriteCount="1" viewCount="23"/>
-		<yt:rating numDislikes="0" numLikes="2"/>
-		*/
+		markup += '<ul class="channel" id="youtube-channel">';
+		$xml.find('entry').each(function(i){
+			if (items && i == items) return false;
 
-		$xml = $(jsonxml);
-		$xml.find('entry').each(function(){
-			var $me=$(this),author,image,title,url,entry;
-
-			author = $me.find('author name').text();
-			image = $me.find('media\\:thumbnail:first').attr('url');
-			title = $me.find('title').text();
-			stats = $me.find('yt\\:statistics').attr('viewCount');
-			url = $me.find('media\\:player').attr('url');
-
-			entry = [
-				'<li class="video">',
-					'<a href="' + url + '">',
-						'<div class="thumb">',
-							'<img src="' + image +'" />',
-						'</div>',
-						'<div class="description">',
-							'<h4>' + title +'</h4>',
-							'<p class="author">by <strong>' + author + '</strong></p>',
-							'<p class="meta">' + stats + ' views</p>',
-						'</div>',
-					'</a>',
-				'</li>'
-			];
-
-			markup += entry.join('');
-
+			markup += co.markVideoItemUp(this);
 		});
-
 		markup += '</ul>';
 		return markup;
 	},
 
-	markVideoUp : function(jsonxml){
-		var $xml,markup,title,author,video,description='',keywords='',keys;
+	markVideoItemUp : function(jsonxml){
+		var $xml=$(jsonxml),author,image,title,url,entry;
+		author = $xml.find('author name').text();
+		image = $xml.find('media\\:thumbnail:first').attr('url');
+		title = $xml.find('title').text();
+		stats = $xml.find('yt\\:statistics').attr('viewCount');
+		url = $xml.find('media\\:player').attr('url');
+		markup = [
+			'<li class="video">',
+				'<a class="notext" href="' + url + '">',
+					'<div class="thumb">',
+						'<img src="' + image +'" />',
+					'</div>',
+					'<div class="description">',
+						'<h4>' + title +'</h4>',
+						'<p class="author">by <strong>' + author + '</strong></p>',
+						'<p class="meta">' + stats + ' views</p>',
+					'</div>',
+				'</a>',
+			'</li>'
+		];
+		return markup.join('');
+	},
+
+	markVideoPanelUp : function(jsonxml){
+		var $xml,markup,title,author,video,description,keywords='',keys;
 
 		$xml = $(jsonxml);
 
@@ -99,8 +91,13 @@ var co = window.kConnectors.youtube = {
 		video = $xml.find('media\\:content[type="application/x-shockwave-flash"]').attr('url');
 
 		description = $xml.find('media\\:description').text();
-		description = description.replace('\n','<br /><br />');
+		if (description != '') {
+			description = description.replace('\n','<br /><br />');
+			description = '<p class="description">' + co.linkText(description) + '</p>';
+		}
 
+		console.log(description);
+		
 		keys = $xml.find('media\\:keywords').text().split(',');
 		keywords = '<p class="keywords"><strong>Keywords: </strong>';
 		$.each(keys,function(number){
@@ -115,7 +112,7 @@ var co = window.kConnectors.youtube = {
 				'<p class="author">added by <a href="http://www.youtube.com/user/' + author + '">' + author + '</a> on ' + date + '</p>',
 				'<iframe class="youtube-player" src="' + video + '"></iframe>',
 				keywords,
-				'<p class="description">' + co.linkText(description) + '</p>',
+				description,
 			'</div>',
 			'<script type="text/javascript">',
 				'var $panel = $(this);',
@@ -154,21 +151,8 @@ var co = window.kConnectors.youtube = {
 		});
 		return string;
 	},
-};
 
-co.addConnector({
-	name : 'user',
-	connectable : function(href, $link){
-		var youtube_user = /https?:\/\/.*youtube\.com\/user\/[a-zA-Z_0-9]*/i;	  
-		return youtube_user.test(href);
-	},
-	getData : function(href, $link){
-		var youtube_user_get = /https?:\/\/.*youtube\.com\/user\/([a-zA-Z_0-9]*)(\/.*)?/i;	  
-		return {
-			user:href.match(youtube_user_get)[1]
-		};
-	},
-	loader : function(data, $panel, $kaiten){
+	loadChannel : function(data, converter){
 		if (!data.user){
 			throw new Error('No User/Channel Defined');
 		}
@@ -176,17 +160,55 @@ co.addConnector({
 			url			: 'https://gdata.youtube.com/feeds/api/videos?v=2&author=' + data.user + '&callback=?',
 			type		: 'get',
 			dataType	: 'json xml',
-			converters	: {
-				'json xml' : function(jsonData){
-					if (jsonData.error){
-						throw new Error(jsonData.error);
-					}
+			converters	: {'json xml' : converter}
+		});
+	},
 
-					$panel.kpanel('setTitle', data.user);
+	loadVideo : function(data, converter){
+		if (!data.video){
+			throw new Error('No Video Defined');
+		}
+		return $.ajax({
+			url			: 'https://gdata.youtube.com/feeds/api/videos/' + data.video + '?v=2&callback=?',
+			type		: 'get',
+			dataType	: 'json xml',
+			converters	: {'json xml' : converter}
+		});
+	},
 
-					return co.markChannelUp(jsonData);
-				}
+	loadSearch : function(data, converter){
+		if (!data.search){
+			throw new Error('No Search Defined');
+		}
+		return $.ajax({
+			url			: 'https://gdata.youtube.com/feeds/api/videos?q=' + data.search + '&v=2&callback=?',
+			type		: 'get',
+			dataType	: 'json xml',
+			converters	: {'json xml' : converter}
+		});
+	}
+};
+
+co.addConnector({
+	name : 'user',
+	connectable : function(href, $link){
+		var youtube_user = /https?:\/\/.*youtube\.com\/user\/[a-zA-Z_0-9]*/i;	 
+		console.log('youtube_user.test(href): ' + youtube_user.test(href)); 
+		return youtube_user.test(href);
+	},
+	getData : function(href, $link){
+		var youtube_user_get = /https?:\/\/.*youtube\.com\/user\/([a-zA-Z_0-9\-]*)(\/.*)?/i;	  
+		return {
+			user:href.match(youtube_user_get)[1]
+		};
+	},
+	loader : function(data, $panel, $kaiten){
+		return co.loadChannel(data,function(jsonData){
+			if (jsonData.error){
+				throw new Error(jsonData.error);
 			}
+			$panel.kpanel('setTitle', data.user);
+			return co.markChannelUp(jsonData);
 		});
 	}
 });
@@ -195,43 +217,31 @@ co.addConnector({
 	name : 'video',
 	connectable : function(href, $link){
 		var youtube_video = /https?:\/\/.*youtube\.com\/watch.*/i;	  
+		console.log('youtube_video.test(href): ' + youtube_video.test(href)); 
 		return youtube_video.test(href);
 	},
 	getData : function(href, $link){
-		var youtube_video_get = /.*v=([a-zA-Z_0-9]*)(&.*)?/i;
+		var youtube_video_get = /.*v=([a-zA-Z_0-9\-]*)(&.*)?/i;
 		return {
 			video:href.match(youtube_video_get)[1]
 		};
 	},
 	loader : function(data, $panel, $kaiten){
-		if (!data.video){
-			throw new Error('No Video Defined');
-		}
-		return $.ajax({
-			url			: 'https://gdata.youtube.com/feeds/api/videos/' + data.video + '?v=2&callback=?',
-			type		: 'get',
-			dataType	: 'json xml',
-			data		: data,
-			converters	: {
-				'json xml' : function(jsonData){
-					if (jsonData.error){
-						throw new Error(jsonData.error);
-					}
-
-					$panel.kpanel('setTitle', data.video);
-
-					return co.markVideoUp(jsonData);
-				}
+		return co.loadVideo(data,function(jsonData){
+			if (jsonData.error){
+				throw new Error(jsonData.error);
 			}
+			$panel.kpanel('setTitle', data.video);
+			return co.markVideoPanelUp(jsonData);
 		});
 	}
 });
-
 
 co.addConnector({
 	name : 'search',
 	connectable : function(href, $link){
 		var youtube_search = /https?:\/\/.*youtube\.com\/results?.*/i;	  
+		console.log('youtube_search.test(href): ' + youtube_search.test(href)); 
 		return youtube_search.test(href);
 	},
 	getData : function(href, $link){
@@ -241,25 +251,12 @@ co.addConnector({
 		};
 	},
 	loader : function(data, $panel, $kaiten){
-		if (!data.search){
-			throw new Error('No Search Defined');
-		}
-		return $.ajax({
-			url			: 'https://gdata.youtube.com/feeds/api/videos?q=' + data.search + '&v=2&callback=?',
-			type		: 'get',
-			dataType	: 'json xml',
-			data		: data,
-			converters	: {
-				'json xml' : function(jsonData){
-					if (jsonData.error){
-						throw new Error(jsonData.error);
-					}
-
-					$panel.kpanel('setTitle', data.search);
-
-					return co.markChannelUp(jsonData);
-				}
+		return co.loadSearch(data,function(jsonData){
+			if (jsonData.error){
+				throw new Error(jsonData.error);
 			}
+			$panel.kpanel('setTitle', data.search);
+			return co.markChannelUp(jsonData);
 		});
 	}
 });
